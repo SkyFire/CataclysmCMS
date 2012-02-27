@@ -94,6 +94,10 @@
     {
     "ProjRelPath" = "T"
     }
+    "Class\\report.php"
+    {
+    "ProjRelPath" = "T"
+    }
     "Class\\storeClass.php"
     {
     "ProjRelPath" = "T"
@@ -126,11 +130,75 @@
     {
     "ProjRelPath" = "T"
     }
+    "README"
+    {
+    "ProjRelPath" = "T"
+    }
     "refund.php"
     {
     "ProjRelPath" = "T"
     }
+    "report.php"
+    {
+    "ProjRelPath" = "T"
+    }
     "store.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Files"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Files\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\Images"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\Images\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\Screens"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\Screens\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\Videos"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Media\\Videos\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Reports"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Upload\\Reports\\index.php"
     {
     "ProjRelPath" = "T"
     }
