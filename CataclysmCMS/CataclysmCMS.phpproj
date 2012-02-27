@@ -18,6 +18,10 @@
 }
 "Files"
 {
+    "account.php"
+    {
+    "ProjRelPath" = "T"
+    }
     "blog.php"
     {
     "ProjRelPath" = "T"
@@ -34,6 +38,78 @@
     {
     "ProjRelPath" = "T"
     }
+    "Class"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\accountClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\blogClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\bugtrackerClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\changelogClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\charactersClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\communityClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\forumClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\gameClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\itemClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\mediaClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\privacyClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\refundClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "Class\\storeClass.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "community.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "forum.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "game.php"
+    {
+    "ProjRelPath" = "T"
+    }
     "index.php"
     {
     "ProjRelPath" = "T"
@@ -43,6 +119,18 @@
     "ProjRelPath" = "T"
     }
     "media.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "privacy.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "refund.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "store.php"
     {
     "ProjRelPath" = "T"
     }
