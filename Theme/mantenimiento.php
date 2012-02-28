@@ -1,8 +1,19 @@
+<?php
+ini_set('display_errors', 1); 
+ini_set('log_errors', 1); 
+
+error_reporting(E_ALL);
+
+include("../Config/config.php");
+
+if(web_mantenimiento != 1) header ("Location: /wow/index.php"); 
+
+?>
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
 
-    <title>Battle.net</title>
+    <title><? echo Title; ?>ss</title>
 
     <!--[if IE]>
     <meta content="false" http-equiv="imagetoolbar" />
@@ -12,14 +23,14 @@
     <meta name="robots" content="none" />
     <meta http-equiv="refresh" content="120" />
 
-    <link rel="icon" type="image/png" href="/wow/static/local-common/images/favicons/root.png" />
+    <link rel="icon" type="image/png" href="<?=Root_Dir;?>static/local-common/images/favicons/root.png" />
     <!--[if LT IE 9]>
     <link rel="shortcut icon" type="image/x-icon" href="/static/local-common/images/favicons/root.ico" />
     <![endif]-->
 
     <style>
     html, body, div, span, object, iframe, h1, p, img { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; }
-    html, body { background: #000 url("/wow/static/local-common/images/layout/bg-wow.jpg") 50% 0 no-repeat; color: #aaafb8; font: normal 12px/1.5 "Trebuchet MS", "Arial", sans-serif; }
+    html, body { background: #000 url("<?=Root_Dir;?>static/local-common/images/layout/bg-wow.jpg") 50% 0 no-repeat; color: #aaafb8; font: normal 12px/1.5 "Trebuchet MS", "Arial", sans-serif; }
 
     br { clear: both; }
 
@@ -69,7 +80,7 @@
     body.zh-cn .info .twitter { font-size: 16px; }
     body.zh-cn .footer { font-size: 12px; }
     body.zh-cn .notice .logo span { }
-    body.zh-cn .logo { background: url("/wow/static/local-common/images/layout/bg-wow-cn.jpg"); }
+    body.zh-cn .logo { background: url("<?=Root_Dir;?>static/local-common/images/layout/bg-wow-cn.jpg"); }
     body.zh-cn .info .twitter { line-height: 1.5; background-image: url(data:image/png;base64,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); }
     body.zh-cn .short { text-align: center; }
 
@@ -78,7 +89,7 @@
     body.zh-tw .footer { font-family: "微軟正黑", "Microsoft JhengHei", "Helvetica", "Tahoma", "新明細體", "PMingLiU", "SimSun", sans-serif; }
     body.zh-tw .info .twitter { line-height: 1.5; }
     body.zh-tw .footer { font-size: 12px; }
-    body.zh-tw .logo { background: url("/wow/static/local-common/images/layout/bg-wow-tw.jpg"); }
+    body.zh-tw .logo { background: url("<?=Root_Dir;?>static/local-common/images/layout/bg-wow-tw.jpg"); }
     </style>
 
     <!--[if LT IE 9]>
@@ -198,9 +209,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">We’ll be back soon!</h2>
-                <p class="short">The Blizzard family of websites is currently undergoing maintenance to improve your browsing experience. Thank you for your patience!</p>
+                <p class="short">The <?=Name_Comm?> family of websites is currently undergoing maintenance to improve your browsing experience. Thank you for your patience!</p>
                 <div class="twitter">
-                    For updates, follow <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCS">@BlizzardCS</a> on Twitter.
+                    For updates, follow <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CS">@<?=Name_Comm?>CS</a> on Twitter.
                 </div>
             </div>
         </div>
@@ -209,9 +220,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">¡Regresaremos pronto!</h2>
-                <p class="short">Los sitios web de Blizzard no están disponibles por el momento. ¡Gracias por tu paciencia!</p>
+                <p class="short">Los sitios web de <?=Name_Comm?> no están disponibles por el momento. ¡Gracias por tu paciencia!</p>
                 <div class="twitter">
-                    Para más información, sigue <a tabindex="1" target="_blank" href="http://twitter.com/Blizzardcs_ES">@BlizzardCS_ES</a> en Twitter.
+                    Para más información, sigue <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>cs_ES">@<?=Name_Comm?>CS_ES</a> en Twitter.
                 </div>
             </div>
         </div>
@@ -220,9 +231,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">Voltaremos logo!</h2>
-                <p class="short">Os websites da Blizzard estão em manutenção para melhorar sua experiência de navegação. Obrigado por sua paciência!</p>
+                <p class="short">Os websites da <?=Name_Comm?> estão em manutenção para melhorar sua experiência de navegação. Obrigado por sua paciência!</p>
                 <div class="twitter">
-                    Para mais informações, siga <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCS">@BlizzardCS</a> no Twitter.
+                    Para mais informações, siga <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CS">@<?=Name_Comm?>CS</a> no Twitter.
                 </div>
             </div>
         </div>
@@ -233,9 +244,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">We’ll be back soon!</h2>
-                <p class="short">The Blizzard family of websites is currently undergoing maintenance to improve your browsing experience. Thank you for your patience!</p>
+                <p class="short">The <?=Name_Comm?> family of websites is currently undergoing maintenance to improve your browsing experience. Thank you for your patience!</p>
                 <div class="twitter">
-                    For updates, follow <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_EN">@BlizzardCSEU_EN</a> on Twitter.
+                    For updates, follow <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_EN">@<?=Name_Comm?>CSEU_EN</a> on Twitter.
                 </div>
             </div>
         </div>
@@ -244,9 +255,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">Wir sind bald zurück!</h2>
-                <p class="short">Die Blizzard-Webseiten werden derzeit gewartet, es werden Inhalte integriert, die eure Browsing-Erfahrung zukünftig verbessern werden. Vielen Dank für eure Geduld!</p>
+                <p class="short">Die <?=Name_Comm?>-Webseiten werden derzeit gewartet, es werden Inhalte integriert, die eure Browsing-Erfahrung zukünftig verbessern werden. Vielen Dank für eure Geduld!</p>
                 <div class="twitter">
-                    Weitere Informationen erhaltet ihr über <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_DE">@BlizzardCSEU_DE</a> auf Twitter.
+                    Weitere Informationen erhaltet ihr über <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_DE">@<?=Name_Comm?>CSEU_DE</a> auf Twitter.
                 </div>
             </div>
         </div>
@@ -255,9 +266,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">¡Volvemos en un periquete!</h2>
-                <p class="short">Las páginas web de Blizzard están temporalmente bajo mantenimiento para asegurar la máxima calidad del servicio. ¡Agradecemos tu paciencia!</p>
+                <p class="short">Las páginas web de <?=Name_Comm?> están temporalmente bajo mantenimiento para asegurar la máxima calidad del servicio. ¡Agradecemos tu paciencia!</p>
                 <div class="twitter">
-                    Puedes mantenerte informado del estado en Twitter: <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_ES">@BlizzardCSEU_ES</a>
+                    Puedes mantenerte informado del estado en Twitter: <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_ES">@<?=Name_Comm?>CSEU_ES</a>
                 </div>
             </div>
         </div>
@@ -266,9 +277,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">Nous serons bientôt de retour !</h2>
-                <p class="short">Les sites Blizzard sont en maintenance pour le moment, afin d'améliorer votre expérience en ligne. Nous vous remercions pour votre patience et votre compréhension.</p>
+                <p class="short">Les sites <?=Name_Comm?> sont en maintenance pour le moment, afin d'améliorer votre expérience en ligne. Nous vous remercions pour votre patience et votre compréhension.</p>
                 <div class="twitter">
-                    Suivez <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_FR">@BlizzardCSEU_FR</a> sur Twitter pour obtenir les informations les plus récentes.
+                    Suivez <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_FR">@<?=Name_Comm?>CSEU_FR</a> sur Twitter pour obtenir les informations les plus récentes.
                 </div>
             </div>
         </div>
@@ -277,9 +288,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">Torniamo subito!</h2>
-                <p class="short">Le pagine web di Blizzard sono momentaneamente fuori servizio. Ti ringraziamo per la pazienza!</p>
+                <p class="short">Le pagine web di <?=Name_Comm?> sono momentaneamente fuori servizio. Ti ringraziamo per la pazienza!</p>
                 <div class="twitter">
-                   Per tenerti informato, segui <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_EN">@BlizzardCSEU_EN</a> suTwitter.
+                   Per tenerti informato, segui <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_EN">@<?=Name_Comm?>CSEU_EN</a> suTwitter.
                 </div>
             </div>
         </div>
@@ -288,9 +299,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">Niedługo wracamy!</h2>
-                <p class="short">Na stronach Blizzard trwają właśnie prace administracyjne. Dziękujemy za cierpliwość!</p>
+                <p class="short">Na stronach <?=Name_Comm?> trwają właśnie prace administracyjne. Dziękujemy za cierpliwość!</p>
                 <div class="twitter">
-                    Aktualne informacje można znaleźć śledząc profil <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_EN">@BlizzardCSEU_EN</a> na Twitterze.
+                    Aktualne informacje można znaleźć śledząc profil <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_EN">@<?=Name_Comm?>CSEU_EN</a> na Twitterze.
                 </div>
             </div>
         </div>
@@ -299,9 +310,9 @@
             <h1 class="logo"><span>World of Warcraft®: Cataclysm</span></h1>
             <div class="info">
                 <h2 class="title">Мы скоро вернемся!</h2>
-                <p class="short">На сайтах Blizzard в настоящий момент проводится техобслуживание, чтобы потом вам было еще приятнее ими пользоваться. Благодарим вас за терпение и понимание!</p>
+                <p class="short">На сайтах <?=Name_Comm?> в настоящий момент проводится техобслуживание, чтобы потом вам было еще приятнее ими пользоваться. Благодарим вас за терпение и понимание!</p>
                 <div class="twitter">
-                    Информация об открытии сайтов будет сразу размещена на <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCSEU_RU">@BlizzardCSEU_RU</a> на Twitter.
+                    Информация об открытии сайтов будет сразу размещена на <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CSEU_RU">@<?=Name_Comm?>CSEU_RU</a> на Twitter.
                 </div>
             </div>
         </div>
@@ -314,7 +325,7 @@
                 <h2 class="title">잠시만 기다려<br />주시기 바랍니다.</h2>
                 <p class="short">현재 일시적으로 블리자드 관련 사이트를 이용하실 수<br />없습니다. 여러분의 많은 양해 부탁드립니다.</p>
                 <div class="twitter">
-                    진행 상황 및 자세한 내용은 트위터의 <a tabindex="1" target="_blank" href="http://twitter.com//BlizzardCS_KR">@BlizzardCS_KR</a>에서 확인할 수 있습니다.
+                    진행 상황 및 자세한 내용은 트위터의 <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CS_KR">@<?=Name_Comm?>CS_KR</a>에서 확인할 수 있습니다.
                 </div>
             </div>
         </div>
@@ -338,9 +349,9 @@
             <h1 class="logo"><span>《魔獸世界：浩劫與重生》</span></h1>
             <div class="info">
                 <h2 class="title">我們馬上回來！</h2>
-                <p class="short">為了讓您享有更佳的瀏覽體驗，<br />各 Blizzard 網頁目前正在進行維護中。感謝您的耐心等待！</p>
+                <p class="short">為了讓您享有更佳的瀏覽體驗，<br />各 <?=Name_Comm?> 網頁目前正在進行維護中。感謝您的耐心等待！</p>
                 <div class="twitter">
-                    請參閱 Twitter 上的 <a tabindex="1" target="_blank" href="http://twitter.com/BlizzardCS">@BlizzardCS</a> 了解更多有關維護相關更新訊息。
+                    請參閱 Twitter 上的 <a tabindex="1" target="_blank" href="http://twitter.com/<?=Name_Comm?>CS">@<?=Name_Comm?>CS</a> 了解更多有關維護相關更新訊息。
                 </div>
             </div>
         </div>
@@ -377,7 +388,7 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
@@ -385,7 +396,7 @@
 					<img src="//privacy-policy.truste.com/certified-seal/wps/en/us.battle.net/seal_m.png" alt="Validate TRUSTe privacy certification" width="143" height="45" />
 				</a>
 				<a target="_blank" tabindex="3" href="//www.esrb.org/ratings/ratings_guide.jsp">
-                    <img src="/wow/static/local-common/images/legal/us/esrb-teen-wow.png" alt="ESRB Ratings Guide" width="149" height="91" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/us/esrb-teen-wow.png" alt="ESRB Ratings Guide" width="149" height="91" />
                 </a>
             </span>
 
@@ -407,7 +418,7 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
@@ -415,7 +426,7 @@
 					<img src="//privacy-policy.truste.com/certified-seal/wps/en/us.battle.net/seal_m.png" alt="Validar certificado de privacidad TRUSTe" width="143" height="45" />
 				</a>
 				<a target="_blank" tabindex="3" href="//www.esrb.org/ratings/ratings_guide.jsp">
-                    <img src="/wow/static/local-common/images/legal/us/esrb-teen-wow-cat-es-mx.png" alt="Guía de clasificaciones de la ESRB" width="200" height="147" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/us/esrb-teen-wow-cat-es-mx.png" alt="Guía de clasificaciones de la ESRB" width="200" height="147" />
                 </a>
             </span>
 
@@ -437,7 +448,7 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
@@ -445,7 +456,7 @@
 					<img src="//privacy-policy.truste.com/certified-seal/wps/en/us.battle.net/seal_m.png" alt="Validate TRUSTe privacy certification" width="143" height="45" />
 				</a>
 				<a target="_blank" tabindex="3" href="//www.esrb.org/ratings/ratings_guide.jsp">
-                    <img src="/wow/static/local-common/images/legal/us/esrb-teen-wow.png" alt="ESRB Ratings Guide" width="149" height="91" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/us/esrb-teen-wow.png" alt="ESRB Ratings Guide" width="149" height="91" />
                 </a>
             </span>
 
@@ -469,12 +480,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//www.pegi.info/">
-                    <img src="/wow/static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
                 </a>
             </span>
 
@@ -496,12 +507,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//www.usk.de/">
-                    <img src="/wow/static/local-common/images/legal/eu/usk-12.png" alt="www.usk.de" width="100" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/usk-12.png" alt="www.usk.de" width="100" height="100" />
                 </a>
             </span>
 
@@ -523,12 +534,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <div class="privacy">
                 <a target="_blank" tabindex="3" href="//www.pegi.info/">
-                    <img src="/wow/static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
                 </a>
             </div>
 
@@ -550,12 +561,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//www.pegi.info/">
-                    <img src="/wow/static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
                 </a>
             </span>
 
@@ -577,12 +588,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//www.pegi.info/">
-                    <img src="/wow/static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
                 </a>
             </span>
 
@@ -604,12 +615,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//www.pegi.info/">
-                    <img src="/wow/static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
                 </a>
             </span>
 
@@ -631,12 +642,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//www.pegi.info/">
-                    <img src="/wow/static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/eu/pegi-wow.png" alt="www.pegi.info" width="178" height="100" />
                 </a>
             </span>
 
@@ -660,12 +671,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//grb.or.kr/">
-                    <img src="/wow/static/local-common/images/legal/kr/wow.png" alt="grb.or.kr" width="660" height="70" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/kr/wow.png" alt="grb.or.kr" width="660" height="70" />
                 </a>
             </span>
 
@@ -698,7 +709,7 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
         </div>
@@ -721,12 +732,12 @@
             <br />
 
             <span class="blizzard">
-                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="/wow/static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
+                <a target="_blank" tabindex="3" href="http://blizzard.com/"><img src="<?=Root_Dir;?>static/local-common/images/logos/blizz-wow.png" alt="Blizzard Entertainment" width="136" height="76" /></a>
             </span>
 
             <span class="privacy">
                 <a target="_blank" tabindex="3" href="//gameservice.org.tw/gsgi_way.php">
-                    <img src="/wow/static/local-common/images/legal/tw/pg-13.png" alt="gameservice.org.tw" width="140" height="94" />
+                    <img src="<?=Root_Dir;?>static/local-common/images/legal/tw/pg-13.png" alt="gameservice.org.tw" width="140" height="94" />
                 </a>
             </span>
 
