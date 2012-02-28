@@ -1,0 +1,21 @@
+# UTF8 support
+AddDefaultCharset utf8
+#php_value default_charset UTF-8
+
+RewriteEngine On
+
+RewriteRule ^es/item$ item.php?lang=es
+RewriteRule ^es/item/$ item.php?lang=es
+RewriteRule ^es/item/([^/]+)$ item.php?lang=es&id=$1
+RewriteRule ^es/item/([^/]+)/$ item.php?lang=es&id=$1
+
+RewriteRule ^es/item/([^/]+)/([^/]+)$ item.php?lang=es&id=$1&cas=$2
+RewriteRule ^es/item/([^/]+)/([^/]+)/$ item.php?lang=es&id=$1&cas=$2
+
+#RewriteRule ^es/item/([^/]+)/([^/]+)$/([^/]+)$ item.php?lang=es&id=$1&cas=$2&rara=$3
+#RewriteRule ^es/item/([^/]+)/([^/]+)/$/([^/]+)/$ item.php?lang=es&id=$1&cas=$2&rara=$3
+
+#Options -Indexes
+
+#^files/([^/]+)/([^/]+).zip /download.php?section=$1&file=$2 [NC]
+#RewriteRule ^item/([^/]+)/([^/]+) item.php?$1=$2 [NC]
